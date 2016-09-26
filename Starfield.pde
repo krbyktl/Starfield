@@ -9,7 +9,8 @@ void draw()
 }
 class NormalParticle
 {
-	//your code here
+	double myX, myY;
+	color 
 }
 interface Particle
 {
