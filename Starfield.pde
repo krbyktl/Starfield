@@ -1,22 +1,25 @@
-NormalParticle[] particles;
+Particle[] particles;
 void setup()
 {
   size(500, 500);
+  particles = new Particle[100];
+  for(int i = 0; i < particles.length; i++)
+  {
+    particles[0] = new OddballParticle();
+    particles[1] = new JumboParticle();
+    particles[i] = new NormalParticle();
+  }
 }
 void draw()
 {
-  background(255);
-  particles = new NormalParticle[10];
+  background(0, 100, 100);
   for(int i = 0; i < particles.length; i++)
   {
-  	particles[i] = new NormalParticle();
-  }
-  for(int i = 0; i < particles.length; i++)
-  	particles[i].move();
- 	particles[i].show();
+   particles[i].move();
+   particles[i].show();
   }
 }
-class NormalParticle
+class NormalParticle implements Particle
 {
   double dX, dY, dTheta, dSpeed;
   color dColor;
@@ -26,29 +29,55 @@ class NormalParticle
     dY = 250;
     dTheta = (double)(Math.random()*(2*Math.PI));
     dSpeed = (double)(Math.random()*10);
+    dColor = color(48, 139, 205);
   }
-  void move()
+  public void move()
   {
     dX = dX + dSpeed*Math.cos(dTheta);
     dY = dY + dSpeed*Math.sin(dTheta);
   }
-  void show()
+  public void show()
   {
-    fill(0);
+  	noStroke();
+    fill(dColor, 200);
     ellipse((float)dX, (float)dY, 10, 10);
   }
 
 }
 interface Particle
 {
-  //your code here
+  public void show();
+  public void move();
 }
-class OddballParticle //uses an interface
+class OddballParticle implements Particle
 {
-  //your code here
+  double dX, dY, dTheta, dSpeed;
+  color dColor;
+  OddballParticle()
+  {
+    dX = 250;
+    dY = 250;
+    dTheta = (double)(Math.random()*(2*Math.PI));
+    dSpeed = (double)(Math.random()*10);
+    dColor = color(48, 139, 205);
+  }
+   public void move()
+  {
+    dX = dX + dSpeed*Math.cos(dTheta);
+    dY = dY + dSpeed*Math.sin(dTheta);
+  }
+  public void show()
+  {
+  	noStroke();
+    fill(dColor, 100);
+    ellipse((float)dX, (float)dY, 20, 20);
+  }
 }
-class JumboParticle //uses inheritance
+class JumboParticle extends OddballParticle
 {
-  //your code here
+  void show()
+  {
+    ellipse((float)dX, (float)dY, 40, 40);
+  }
 }
 
