@@ -13,6 +13,8 @@ void setup()
 void draw()
 {
   background(0, 100, 100);
+  fill(0, 150, 255);
+  ellipse(250, 250, 200, 200);
   for(int i = 0; i < particles.length; i++)
   {
    particles[i].move();
@@ -29,7 +31,7 @@ class NormalParticle implements Particle
     dY = 250;
     dTheta = (double)(Math.random()*(2*Math.PI));
     dSpeed = (double)(Math.random()*10);
-    dColor = color(48, 139, 205);
+    dColor = color(150, 139, 205);
   }
   public void move()
   {
