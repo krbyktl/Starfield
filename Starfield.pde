@@ -2,7 +2,7 @@ Particle[] particles;
 void setup()
 {
   size(500, 500);
-  particles = new Particle[100];
+  particles = new Particle[500];
   for(int i = 0; i < particles.length; i++)
   {
     particles[0] = new OddballParticle();
@@ -12,8 +12,8 @@ void setup()
 }
 void draw()
 {
-  background(0, 100, 100);
-  fill(0, 150, 255);
+  background(50, 100, 200);
+  fill(255, 250, 0, 50);
   ellipse(250, 250, 200, 200);
   for(int i = 0; i < particles.length; i++)
   {
@@ -29,20 +29,20 @@ class NormalParticle implements Particle
   {
     dX = 250;
     dY = 250;
-    dTheta = (double)(Math.random()*(2*Math.PI));
+	dTheta = (double)(Math.random()*(2*Math.PI));
     dSpeed = (double)(Math.random()*10);
     dColor = color(150, 139, 205);
   }
   public void move()
   {
-    dX = dX + dSpeed*Math.cos(dTheta);
-    dY = dY + dSpeed*Math.sin(dTheta);
+    	dX = dX + dSpeed*Math.cos(dTheta);
+   		dY = dY + dSpeed*Math.sin(dTheta);
   }
   public void show()
   {
   	noStroke();
     fill(dColor, 200);
-    ellipse((float)dX, (float)dY, 10, 10);
+    ellipse((float)dX, (float)dY, 5, 5);
   }
 
 }
