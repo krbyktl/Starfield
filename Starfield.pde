@@ -5,8 +5,11 @@ void setup()
   particles = new Particle[10000];
   for(int i = 0; i < particles.length; i++)
   {
-   particles[0] = new OddballParticle();
-      for(int j = 1; j < 50; j++)
+  	for(int k = 0; k < 20; k ++)
+  	{
+  	  particles[k] = new OddballParticle();
+  	}
+      for(int j = 20; j < 40; j++)
     {
       particles[j] = new JumboParticle();
     }
@@ -30,7 +33,7 @@ class NormalParticle implements Particle
   {
     dX = 250;
     dY = 250;
-  dTheta = (double)(Math.random()*(2*Math.PI));
+  	dTheta = (double)(Math.random()*(2*Math.PI));
     dSpeed = (double)(Math.random()*10);
     dColor = color(150, 139, 205);
   }
