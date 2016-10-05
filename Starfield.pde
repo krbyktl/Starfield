@@ -9,7 +9,7 @@ void setup()
   	{
   	  particles[k] = new OddballParticle();
   	}
-      for(int j = 20; j < 40; j++)
+      for(int j = 20; j < 30; j++)
     {
       particles[j] = new JumboParticle();
     }
@@ -35,12 +35,12 @@ class NormalParticle implements Particle
     dY = 250;
   	dTheta = (double)(Math.random()*(2*Math.PI));
     dSpeed = (double)(Math.random()*10);
-    dColor = color(150, 139, 205);
+    dColor = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
   }
   public void move()
   {
-      dX = dX + .5*dSpeed*Math.cos(dTheta);
-       dY = dY + 10*dSpeed*Math.sin(dTheta);
+      dX = dX + .25*dSpeed*Math.cos(dTheta);
+      dY = dY + 5*dSpeed*Math.sin(dTheta);
   }
   public void show()
   {
@@ -77,6 +77,10 @@ class OddballParticle implements Particle
     noStroke();
     fill(dColor);
     ellipse((float)dX, (float)dY, 20, 20);
+    noFill();
+    stroke(dColor);
+    ellipse((float)dX, (float)dY, 30, 10);
+    ellipse((float)dX, (float)dY, 40, 10);
   }
 }
 class JumboParticle extends OddballParticle
@@ -84,6 +88,10 @@ class JumboParticle extends OddballParticle
   void show()
   {
     fill(0, 255, 0);
+    noStroke();
     ellipse((float)dX, (float)dY, 40, 40);
+    noFill();
+    stroke(0, 255, 0);
+    ellipse((float)dX, (float)dY, 50, 10);
   }
 }
